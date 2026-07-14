@@ -22,23 +22,23 @@ function Navbar() {
 					Blogify
 				</NavLink>
 
-				<div className='hidden md:flex items-center gap-8 text-sm font-medium text-gray-700'>
-					{links.map(link => (
-						<NavLink
-							key={link.name}
-							to={link.path}
-							className={({ isActive }) =>
-								isActive
-									? 'text-indigo-600'
-									: 'hover:text-indigo-600 transition-colors'
-							}
-						>
-							{link.name}
-						</NavLink>
-					))}
-				</div>
+				<div className='hidden md:flex items-center gap-10'>
+					<div className='flex items-center gap-8 text-sm font-medium text-gray-700'>
+						{links.map(link => (
+							<NavLink
+								key={link.name}
+								to={link.path}
+								className={({ isActive }) =>
+									isActive
+										? 'text-indigo-600'
+										: 'hover:text-indigo-600 transition-colors'
+								}
+							>
+								{link.name}
+							</NavLink>
+						))}
+					</div>
 
-				<div className='hidden md:block'>
 					<NavLink to='/login'>
 						<Button text='Login' variant='primary' />
 					</NavLink>

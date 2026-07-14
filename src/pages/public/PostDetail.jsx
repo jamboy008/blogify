@@ -1,11 +1,7 @@
 import React from 'react'
 
 function PostDetail() {
-	return (
-		<div>
-			
-		</div>
-	)
+	return <div>PostDetail</div>
 }
 
 export default PostDetail

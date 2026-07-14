@@ -1,3 +1,7 @@
+import webDevImg from '../assets/web-dev.jpg'
+import productivityImg from '../assets/productivity.jpg'
+import designImg from '../assets/design.jpg'
+
 const posts = [
 	{
 		id: 1,
@@ -6,7 +10,7 @@ const posts = [
 		title: 'The Future of Web Development',
 		excerpt:
 			'Exploring the latest trends and technologies shaping the future of web development in 2025.',
-		gradient: 'from-blue-600 via-indigo-500 to-purple-500',
+		image: webDevImg,
 	},
 	{
 		id: 2,
@@ -15,7 +19,7 @@ const posts = [
 		title: 'Mastering Productivity',
 		excerpt:
 			'Proven strategies and tools to boost your productivity and achieve your goals faster.',
-		gradient: 'from-gray-700 via-gray-600 to-gray-500',
+		image: productivityImg,
 	},
 	{
 		id: 3,
@@ -24,7 +28,7 @@ const posts = [
 		title: 'Design Principles That Matter',
 		excerpt:
 			'Essential design principles every creator should know to build stunning user experiences.',
-		gradient: 'from-pink-500 via-purple-500 to-indigo-500',
+		image: designImg,
 	},
 ]
 

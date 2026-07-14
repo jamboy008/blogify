@@ -2,9 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { Zap, ShieldCheck, Settings, ArrowRight, Calendar } from 'lucide-react'
 
-import Navbar from '../../components/Navbar'
 import Hero from '../../components/Hero'
-import Footer from '../../components/Footer'
 import Button from '../../components/Button'
 import posts from '../../data/posts'
 
@@ -32,7 +30,6 @@ const features = [
 function Home() {
 	return (
 		<>
-			<Navbar />
 			<Hero />
 
 			<section className='max-w-7xl mx-auto px-6 py-20 text-center'>
@@ -85,9 +82,12 @@ function Home() {
 								key={post.id}
 								className='bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow'
 							>
-								<div
-									className={`h-44 bg-gradient-to-br ${post.gradient} relative`}
-								>
+								<div className='h-44 relative'>
+									<img
+										src={post.image}
+										alt={post.title}
+										className='w-full h-full object-cover'
+									/>
 									<span className='absolute top-3 left-3 bg-white/90 text-xs font-medium text-gray-800 px-3 py-1 rounded-full'>
 										{post.category}
 									</span>
@@ -122,8 +122,6 @@ function Home() {
 					</div>
 				</div>
 			</section>
-
-			<Footer />
 		</>
 	)
 }

@@ -1,11 +1,7 @@
 import React from 'react'
 
 function UpdatePost() {
-	return (
-		<div>
-			
-		</div>
-	)
+	return <div>UpdatePost</div>
 }
 
 export default UpdatePost

@@ -42,9 +42,12 @@ function Footer() {
 				<div>
 					<h4 className='font-semibold text-gray-900 mb-4'>Connect</h4>
 					<div className='flex gap-4 text-gray-400 text-lg'>
-						<FaTwitter className='hover:text-indigo-600 cursor-pointer' />
+						{/* <FaTwitter className='hover:text-indigo-600 cursor-pointer' />
 						<FaGithub className='hover:text-indigo-600 cursor-pointer' />
-						<FaLinkedin className='hover:text-indigo-600 cursor-pointer' />
+						<FaLinkedin className='hover:text-indigo-600 cursor-pointer' /> */}
+						<img src='./public/twiter.svg' alt='' />
+						<img src='./public/github.svg' alt='' />
+						<img src='./public/linkedin.svg' alt='' />
 					</div>
 				</div>
 			</div>

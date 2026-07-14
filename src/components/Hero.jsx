@@ -31,8 +31,8 @@ function Hero() {
 				</div>
 
 				<div className='relative'>
-					<div className='bg-white rounded-2xl shadow-xl p-8 flex items-center justify-center h-72 md:h-80'>
-						<div className='text-center'>
+					<div className='bg-white rounded-2xl shadow-xl p-8 flex items-center justify-center h-72 md:h-80 '>
+						{/* <div className='text-center'>
 							<Feather size={48} className='mx-auto text-indigo-600' />
 							<p className='mt-4 font-semibold text-gray-800'>
 								Blogify Community
@@ -40,7 +40,8 @@ function Hero() {
 							<p className='text-sm text-gray-500'>
 								Yozing, o'qing, ilhomlaning
 							</p>
-						</div>
+						</div> */}
+						<img src="../public/rasm.jpg" alt="" />
 					</div>
 					<Leaf
 						className='absolute -bottom-4 -left-4 text-indigo-200'
