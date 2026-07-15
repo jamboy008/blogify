@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Zap, ShieldCheck, Settings, ArrowRight, Calendar } from 'lucide-react'
+import { Zap, ShieldCheck, Settings, ArrowRight } from 'lucide-react'
 
 import Hero from '../../components/Hero'
 import Button from '../../components/Button'
-import posts from '../../data/posts'
+import LatestPost from '../../components/LatestPost'
+
+const BASE_URL = import.meta.env.VITE_API_BASE_URL
+console.log('BASE_URL:', BASE_URL)
 
 const features = [
 	{
@@ -28,6 +31,33 @@ const features = [
 ]
 
 function Home() {
+	const [posts, setPosts] = useState([])
+	const [loading, setLoading] = useState(true)
+	const [error, setError] = useState(false)
+
+	useEffect(() => {
+		async function getPosts() {
+			setLoading(true)
+			setError(false)
+			try {
+				const res = await fetch(BASE_URL + 'articles/')
+				if (!res.ok) {
+					throw new Error('olib kelishda muammo')
+				}
+				const data = await res.json()
+				console.log(data) // struktura moslashmasa shu yerdan tekshiring
+				// Bosh sahifada faqat oxirgi 3 ta postni ko'rsatamiz
+				setPosts(data.data.results.slice(0, 3))
+			} catch (error) {
+				console.log(error)
+				setError(true)
+			} finally {
+				setLoading(false)
+			}
+		}
+		getPosts()
+	}, [])
+
 	return (
 		<>
 			<Hero />
@@ -75,41 +105,21 @@ function Home() {
 						</NavLink>
 					</div>
 
-					<div className='mt-10 grid md:grid-cols-3 gap-8'>
-						{posts.map(post => (
-							<NavLink
-								to={`/posts/${post.id}`}
-								key={post.id}
-								className='bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow'
-							>
-								<div className='h-44 relative'>
-									<img
-										src={post.image}
-										alt={post.title}
-										className='w-full h-full object-cover'
-									/>
-									<span className='absolute top-3 left-3 bg-white/90 text-xs font-medium text-gray-800 px-3 py-1 rounded-full'>
-										{post.category}
-									</span>
-								</div>
-								<div className='p-5'>
-									<div className='flex items-center gap-2 text-xs text-gray-400'>
-										<Calendar size={14} />
-										{post.date}
-									</div>
-									<h3 className='mt-2 font-semibold text-gray-900'>
-										{post.title}
-									</h3>
-									<p className='mt-2 text-sm text-gray-500 line-clamp-2'>
-										{post.excerpt}
-									</p>
-									<span className='mt-3 inline-flex items-center gap-1 text-indigo-600 text-sm font-medium'>
-										Read more <ArrowRight size={14} />
-									</span>
-								</div>
-							</NavLink>
-						))}
-					</div>
+					{loading && (
+						<p className='text-center text-gray-400 py-16'>Yuklanmoqda...</p>
+					)}
+
+					{error && (
+						<p className='text-center text-red-400 py-16'>
+							Ma'lumotlarni yuklashda xatolik yuz berdi.
+						</p>
+					)}
+
+					{!loading && !error && (
+						<div className='mt-10'>
+							<LatestPost articles={posts} />
+						</div>
+					)}
 
 					<div className='mt-8 flex justify-center sm:hidden'>
 						<NavLink to='/posts'>
