@@ -4,6 +4,7 @@ import { Search, Calendar, ArrowRight } from 'lucide-react'
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
+
 function Posts() {
 	const [posts, setPosts] = useState([])
 	const [loading, setLoading] = useState(true)
@@ -21,7 +22,7 @@ function Posts() {
 					throw new Error('olib kelishda muammo')
 				}
 				const data = await res.json()
-				console.log(JSON.stringify(data.data.results, null, 2)) // barcha fieldlarni ko'rish uchun
+				console.log(JSON.stringify(data.data.results, null, 2)) 
 				setPosts(data.data.results)
 			} catch (error) {
 				console.log(error)
@@ -33,8 +34,7 @@ function Posts() {
 		getPosts()
 	}, [])
 
-	// Kategoriyalar ro'yxatini postlarning o'zidan dinamik hosil qilamiz
-	// (backend category ni { id, name } shaklida qaytaradi)
+
 	const categories = [
 		'All',
 		...new Set(posts.map(post => post.category?.name).filter(Boolean)),
