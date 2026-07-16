@@ -7,7 +7,7 @@ import Button from '../../components/Button'
 import LatestPost from '../../components/LatestPost'
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
-console.log('BASE_URL:', BASE_URL)
+// console.log('BASE_URL:', BASE_URL)
 
 const features = [
 	{
@@ -45,7 +45,7 @@ function Home() {
 					throw new Error('olib kelishda muammo')
 				}
 				const data = await res.json()
-				console.log(data) // struktura moslashmasa shu yerdan tekshiring
+				// console.log(data) // struktura moslashmasa shu yerdan tekshiring
 				// Bosh sahifada faqat oxirgi 3 ta postni ko'rsatamiz
 				setPosts(data.data.results.slice(0, 3))
 			} catch (error) {
