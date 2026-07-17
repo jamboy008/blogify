@@ -1,12 +1,10 @@
-import React from 'react'
 import { Navigate } from 'react-router-dom'
 
+function ProtectedRoute({ children }) {
+	let accessToken = localStorage.getItem('access')
 
-function ProtectedRoute(children) {
-	let accessToken = locallStorage.getItem("access")
-
-	if(!accessToken){
-		return <Navigate to={'/login'}/>
+	if (!accessToken) {
+		return <Navigate to='/login' />
 	}
 	return children
 }
