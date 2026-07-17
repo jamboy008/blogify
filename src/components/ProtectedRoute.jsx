@@ -4,7 +4,7 @@ function ProtectedRoute({ children }) {
 	let accessToken = localStorage.getItem('access')
 
 	if (!accessToken) {
-		return <Navigate to='/login' />
+		return <Navigate to='/login' /> 
 	}
 	return children
 }
