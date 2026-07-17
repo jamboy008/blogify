@@ -14,6 +14,8 @@ import Dashboard from './pages/admin/Dashboard'
 import UpdatePost from './pages/admin/UpdatePost'
 import LoginPage from './pages/auth/LoginPage'
 
+import ProtectedRoute from './components/ProtectedRoute'
+
 function App() {
 	const routes = createBrowserRouter([
 		{
@@ -38,7 +40,11 @@ function App() {
 
 		{
 			path: '/admin',
-			element: <AdminLayout />,
+			element: (
+				<ProtectedRoute>
+					<AdminLayout />
+				</ProtectedRoute>
+			),
 			children: [
 				{
 					index: true,
